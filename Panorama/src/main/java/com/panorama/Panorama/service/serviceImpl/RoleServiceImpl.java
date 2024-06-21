@@ -3,6 +3,7 @@ package com.panorama.Panorama.service.serviceImpl;
 import com.panorama.Panorama.dto.request.RoleRequest;
 import com.panorama.Panorama.dto.response.RoleResponse;
 import com.panorama.Panorama.entity.RoleEntity;
+import com.panorama.Panorama.exception.CustomException;
 import com.panorama.Panorama.repository.RoleRepository;
 import com.panorama.Panorama.service.RoleService;
 import com.panorama.Panorama.utils.ResponseUtils;
