@@ -24,5 +24,9 @@ public class PhotoSession {
     @JoinColumn(name = "admin_id")
     private Admin admin;
 
+    // One photo session can have multiple photos
+    @OneToMany(mappedBy = "photoSession", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Photo> photos = new HashSet<>();
+
 
 }
