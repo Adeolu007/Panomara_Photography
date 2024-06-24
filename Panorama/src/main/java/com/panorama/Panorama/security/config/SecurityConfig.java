@@ -1,6 +1,7 @@
 package com.panorama.Panorama.security.config;
 
 import com.panorama.Panorama.security.config.JwtAuthenticationFilter;
+import com.panorama.Panorama.security.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
