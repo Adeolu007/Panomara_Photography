@@ -2,6 +2,7 @@ package com.panorama.Panorama.service.serviceImpl;
 
 import com.panorama.Panorama.dto.request.PhotoSessionRequest;
 import com.panorama.Panorama.entity.Admin;
+import com.panorama.Panorama.entity.Photo;
 import com.panorama.Panorama.entity.PhotoSession;
 import com.panorama.Panorama.repository.AdminRepository;
 import com.panorama.Panorama.repository.PhotoSessionRepository;
@@ -11,7 +12,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -67,5 +69,34 @@ private final AdminRepository adminRepository;
 
         photoSessionRepository.save(photoSession);
         return  "photo session created";
+    }
+
+    @Override
+    public String addPhotos(String[] photoUrls, Long id) {
+        if (!photoSessionRepository.existsById(id)){
+            return "Photo Session does not exist, please input a valid Photo Session id";
+        }
+
+        PhotoSession photoSession = photoSessionRepository.findById(id) .orElseThrow(() -> new NoSuchElementException("PhotoSession not found with id: " + id));
+        // Convert String[] photoUrls to Set<Photo> (assuming Photo is an entity with a URL field)
+        Set<Photo> photos = convertToPhotos(photoUrls);
+
+        // Set photos to the PhotoSession entity
+        photoSession.getPhotos().addAll(photos);
+
+        // Save the updated PhotoSession entity
+        photoSessionRepository.save(photoSession);
+
+        return "Photos have been added to photo session";
+    }
+
+    private Set<Photo> convertToPhotos(String[] photoUrls) {
+        return Arrays.stream(photoUrls)
+                .map(url -> {
+                    Photo photo = new Photo();
+                    photo.setUrl(url);
+                    return photo;
+                })
+                .collect(Collectors.toSet());
     }
 }

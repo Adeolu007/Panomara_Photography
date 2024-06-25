@@ -16,4 +16,9 @@ public class PhotoSessionController {
     public String registerPhotoSession (@RequestBody PhotoSessionRequest photoSessionRequest, @PathVariable Long id){
         return photoSessionService.registerPhotoSession(photoSessionRequest, id);
     }
+
+    @PostMapping("/{id}/add-photos")
+    public String a(@RequestBody String[] photoUrls, @PathVariable Long id) {
+        return photoSessionService.addPhotos(photoUrls, id);
+    }
 }
