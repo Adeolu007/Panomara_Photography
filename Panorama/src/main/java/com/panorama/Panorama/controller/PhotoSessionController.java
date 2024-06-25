@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/photo")
 @AllArgsConstructor
 public class PhotoSessionController {
     private final PhotoSessionServiceImpl photoSessionService;
