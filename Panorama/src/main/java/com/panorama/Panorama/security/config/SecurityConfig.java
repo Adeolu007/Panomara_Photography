@@ -64,6 +64,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/admin/login").permitAll()
                                // .requestMatchers("/api/v1/auth/register-photo-session/**").permitAll()
                                 .requestMatchers("/api/v1/auth/login").permitAll()
+                                .requestMatchers("/photo/**").hasAnyRole("DRIVER", "ADMIN")
                                 .requestMatchers("/photo/register-photo-session/**").hasAnyRole("DRIVER", "ADMIN")
                                 .requestMatchers("/api/drivers/**").hasAnyRole("DRIVER", "ADMIN")
                                 .requestMatchers("/api/admin").hasRole("ADMIN").anyRequest().authenticated()

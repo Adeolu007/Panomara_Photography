@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/photo")
+@RequestMapping("/photo-session")
 @AllArgsConstructor
 public class PhotoSessionController {
     private final PhotoSessionServiceImpl photoSessionService;
