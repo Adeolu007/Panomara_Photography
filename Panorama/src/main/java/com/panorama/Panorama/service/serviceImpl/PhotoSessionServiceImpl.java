@@ -90,6 +90,11 @@ private final AdminRepository adminRepository;
         return "Photos have been added to photo session";
     }
 
+    @Override
+    public String deletePhotoSession(Long id) {
+        return null;
+    }
+
     private Set<Photo> convertToPhotos(String[] photoUrls) {
         return Arrays.stream(photoUrls)
                 .map(url -> {
