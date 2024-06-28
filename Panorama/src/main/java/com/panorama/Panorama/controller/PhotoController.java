@@ -20,6 +20,7 @@ public class PhotoController {
 
     @DeleteMapping("/delete/{photoId}")
     public void deletePhoto(@PathVariable Long photoId) {
+        //is this necessary?
         photoService.deletePhoto(photoId);
     }
 
